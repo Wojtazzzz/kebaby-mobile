@@ -1,16 +1,18 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
+import { API_URL } from '../../../utils/env';
+import { getRestaurantListQueryKey } from '../../../utils/queryKeys';
 
 async function fetchData() {
 	return await axios
-		.get('http://192.168.1.45/api/restaurants')
+		.get(`${API_URL}/restaurants`)
 		.then((response) => response!.data);
 }
 
 export function useGetRestaurants() {
 	const { isLoading, isError, isSuccess, data, error } = useQuery({
 		queryFn: async () => await fetchData(),
-		queryKey: ['restaurants'],
+		queryKey: getRestaurantListQueryKey(),
 	});
 
 	return {

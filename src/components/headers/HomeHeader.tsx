@@ -11,7 +11,7 @@ export function HomeHeader() {
 
 	return (
 		<View style={styles.container}>
-			<Text>Kebaby</Text>
+			<Text style={styles.title}>Kebaby</Text>
 
 			<Button title='Dodaj lokal' onPress={goToRestaurantPage} />
 		</View>
@@ -23,6 +23,11 @@ const styles = StyleSheet.create({
 		width: '100%',
 		flexDirection: 'row',
 		justifyContent: 'space-between',
+		alignItems: 'center',
 		paddingRight: 30,
+	},
+	title: {
+		fontSize: 20,
+		fontWeight: '500',
 	},
 });

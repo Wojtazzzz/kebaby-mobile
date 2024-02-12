@@ -2,13 +2,12 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 import { useNavigation } from '../../../hooks/useNavigation';
 import { getRestaurantListQueryKey } from '../../../utils/queryKeys';
+import { API_URL } from '../../../utils/env';
 
 async function mutationFn(data: AddRestaurantPayload) {
-	return await axios
-		.post('http://192.168.1.45/api/restaurants', data)
-		.catch((error) => {
-			console.log(error);
-		});
+	return await axios.post(`${API_URL}/restaurants`, data).catch((error) => {
+		console.log(error);
+	});
 }
 
 type AddRestaurantPayload = {

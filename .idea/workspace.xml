@@ -4,9 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab600768-ddd7-4411-b93c-41bf9f701ae8" name="Changes" comment="add prettier, fix type errors, move logic to custom hooks">
+    <list default="true" id="ab600768-ddd7-4411-b93c-41bf9f701ae8" name="Changes" comment="remove unused imports">
+      <change afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/env.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/AddRestaurant/AddRestaurantScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/AddRestaurant/AddRestaurantScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/headers/HomeHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/headers/HomeHeader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/AddRestaurant/hooks/useAddRestaurant.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/AddRestaurant/hooks/useAddRestaurant.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/Home/hooks/useGetRestaurants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Home/hooks/useGetRestaurants.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +50,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "prettierjs.PrettierConfiguration.Package": "/home/marcin/Projects/kebaby-mobile/node_modules/prettier",
-    "settings.editor.selected.configurable": "settings.javascript.prettier",
+    "settings.editor.selected.configurable": "preferences.fileTypes",
     "ts.external.directory.path": "/home/marcin/Projects/kebaby-mobile/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
@@ -68,7 +73,8 @@
       <option name="presentableId" value="Default" />
       <updated>1707668602824</updated>
       <workItem from="1707668603823" duration="10675000" />
-      <workItem from="1707748900992" duration="3419000" />
+      <workItem from="1707748900992" duration="3567000" />
+      <workItem from="1707752473850" duration="868000" />
     </task>
     <task id="LOCAL-00001" summary="initial day">
       <option name="closed" value="true" />
@@ -94,7 +100,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707752294834</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="remove unused imports">
+      <option name="closed" value="true" />
+      <created>1707752372890</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1707752372890</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -104,6 +118,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="initial day" />
     <MESSAGE value="add prettier, fix type errors, move logic to custom hooks" />
-    <option name="LAST_COMMIT_MESSAGE" value="add prettier, fix type errors, move logic to custom hooks" />
+    <MESSAGE value="remove unused imports" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove unused imports" />
   </component>
 </project>
