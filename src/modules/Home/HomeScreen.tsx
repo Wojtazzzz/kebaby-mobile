@@ -5,8 +5,6 @@ import {
 	TouchableWithoutFeedback,
 	View,
 } from 'react-native';
-import { useQuery } from '@tanstack/react-query';
-import axios from 'axios/index';
 import { useGetRestaurants } from './hooks/useGetRestaurants';
 import { useNavigation } from '../../hooks/useNavigation';
 

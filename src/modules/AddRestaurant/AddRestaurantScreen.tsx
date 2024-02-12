@@ -1,8 +1,4 @@
 import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
-import { useState } from 'react';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import axios from 'axios/index';
-import { useNavigation } from '@react-navigation/native';
 import { useAddRestaurant } from './hooks/useAddRestaurant';
 import { useAddRestaurantForm } from './hooks/useAddRestaurantForm';
 
