@@ -4,14 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab600768-ddd7-4411-b93c-41bf9f701ae8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/headers/HomeHeader.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/AddRestaurant/AddRestaurantScreen.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/Home/HomeScreen.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/Restaurant/RestaurantScreen.tsx" afterDir="false" />
+    <list default="true" id="ab600768-ddd7-4411-b93c-41bf9f701ae8" name="Changes" comment="initial day">
+      <change afterPath="$PROJECT_DIR$/.prettierrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hooks/useNavigation.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/AddRestaurant/hooks/useAddRestaurant.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/AddRestaurant/hooks/useAddRestaurantForm.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/Home/hooks/useGetRestaurants.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/queryKeys.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/types.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/babel.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/babel.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/headers/HomeHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/headers/HomeHeader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/AddRestaurant/AddRestaurantScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/AddRestaurant/AddRestaurantScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/Home/HomeScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Home/HomeScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/Restaurant/RestaurantScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Restaurant/RestaurantScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,9 +33,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2cEEzqQcWyk0VwVwzzNqAl4ZrKb" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -38,15 +50,19 @@
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
+    "js.linters.configure.manually.selectedeslint": "true",
     "last_opened_file_path": "/home/marcin/Projects/kebaby-mobile/src",
     "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "prettierjs.PrettierConfiguration.Package": "/home/marcin/Projects/kebaby-mobile/node_modules/prettier",
+    "settings.editor.selected.configurable": "settings.javascript.prettier",
     "ts.external.directory.path": "/home/marcin/Projects/kebaby-mobile/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
@@ -56,6 +72,7 @@
       <recent name="$PROJECT_DIR$/src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/modules/AddRestaurant/utils" />
       <recent name="$PROJECT_DIR$/src/modules" />
     </key>
   </component>
@@ -67,8 +84,18 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1707668602824</updated>
-      <workItem from="1707668603823" duration="9996000" />
+      <workItem from="1707668603823" duration="10675000" />
+      <workItem from="1707748900992" duration="3333000" />
     </task>
+    <task id="LOCAL-00001" summary="initial day">
+      <option name="closed" value="true" />
+      <created>1707678803231</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1707678803231</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -76,5 +103,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="initial day" />
+    <option name="LAST_COMMIT_MESSAGE" value="initial day" />
   </component>
 </project>
