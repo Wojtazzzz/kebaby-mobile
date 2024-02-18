@@ -2,6 +2,8 @@ import { AppRegistry } from 'react-native';
 import HomeScreen from './src/modules/Home/HomeScreen';
 import RestaurantScreen from './src/modules/Restaurant/RestaurantScreen';
 import AddRestaurantScreen from './src/modules/AddRestaurant/AddRestaurantScreen';
+import KebabScreen from './src/modules/Kebab/KebabScreen';
+import AddKebabOpinionScreen from './src/modules/AddKebabOpinion/AddKebabOpinionScreen';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { NavigationContainer } from '@react-navigation/native';
 import {
@@ -20,6 +22,30 @@ export type RootStackParamList = {
 			city: string;
 		};
 	};
+	KebabScreen: {
+		restaurant: {
+			id: number;
+			name: string;
+			city: string;
+		};
+		kebab: {
+			id: number;
+			name: string;
+			opinions_count: number;
+		};
+	};
+	AddKebabOpinionScreen: {
+		restaurant: {
+			id: number;
+			name: string;
+			city: string;
+		};
+		kebab: {
+			id: number;
+			name: string;
+			opinions_count: number;
+		};
+	};
 };
 
 export type UseNavigation = NativeStackNavigationProp<RootStackParamList>;
@@ -28,7 +54,6 @@ const queryClient = new QueryClient();
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 AppRegistry.registerComponent('HomeScreen', () => HomeScreen);
-AppRegistry.registerComponent('RestaurantScreen', () => RestaurantScreen);
 
 export default function App() {
 	return (
@@ -55,6 +80,22 @@ export default function App() {
 						name='AddRestaurantScreen'
 						component={AddRestaurantScreen}
 						options={{ title: 'Dodaj lokal' }}
+					/>
+
+					<Stack.Screen
+						name='KebabScreen'
+						component={KebabScreen}
+						options={({ route }) => ({
+							title: `${route.params.kebab.name} - ${route.params.restaurant.name}`,
+						})}
+					/>
+
+					<Stack.Screen
+						name='AddKebabOpinionScreen'
+						component={AddKebabOpinionScreen}
+						options={({ route }) => ({
+							title: `${route.params.kebab.name} - Dodaj opinie`,
+						})}
 					/>
 				</Stack.Navigator>
 			</QueryClientProvider>

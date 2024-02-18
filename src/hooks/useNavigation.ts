@@ -7,6 +7,12 @@ type Restaurant = {
 	city: string;
 };
 
+type Kebab = {
+	id: number;
+	name: string;
+	opinions_count: number;
+};
+
 export function useNavigation() {
 	const navigation = useReactNavigation<UseNavigation>();
 
@@ -24,9 +30,25 @@ export function useNavigation() {
 		navigation.navigate('HomeScreen');
 	}
 
+	function goToKebabScreen(restaurant: Restaurant, kebab: Kebab) {
+		navigation.navigate('KebabScreen', {
+			restaurant,
+			kebab,
+		});
+	}
+
+	function goToAddKebabOpinionScreen(restaurant: Restaurant, kebab: Kebab) {
+		navigation.navigate('AddKebabOpinionScreen', {
+			restaurant,
+			kebab,
+		});
+	}
+
 	return {
 		goToAddRestaurantScreen,
 		goToRestaurantScreen,
 		goToHomeScreen,
+		goToKebabScreen,
+		goToAddKebabOpinionScreen,
 	};
 }

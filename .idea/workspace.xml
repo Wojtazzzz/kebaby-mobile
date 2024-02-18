@@ -4,14 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab600768-ddd7-4411-b93c-41bf9f701ae8" name="Changes" comment="remove unused imports">
-      <change afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/env.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="ab600768-ddd7-4411-b93c-41bf9f701ae8" name="Changes" comment="add env variables">
+      <change afterPath="$PROJECT_DIR$/src/hooks/useGetKebabSauces.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hooks/useGetKebabSizes.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/AddKebabOpinion/AddKebabOpinionScreen.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/AddKebabOpinion/hooks/useAddKebabOpinion.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/AddKebabOpinion/hooks/useAddKebabOpinionForm.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/Kebab/KebabScreen.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/Kebab/useGetKebabOpinions.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/Restaurant/hooks/useGetRestaurantKebabs.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/headers/HomeHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/headers/HomeHeader.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/AddRestaurant/hooks/useAddRestaurant.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/AddRestaurant/hooks/useAddRestaurant.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/Home/hooks/useGetRestaurants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Home/hooks/useGetRestaurants.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useNavigation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useNavigation.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/Restaurant/RestaurantScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Restaurant/RestaurantScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/queryKeys.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/queryKeys.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +49,7 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
     "js.linters.configure.manually.selectedeslint": "true",
-    "last_opened_file_path": "/home/marcin/Projects/kebaby-mobile/src",
+    "last_opened_file_path": "/home/marcin/Projects/kebaby-mobile/src/modules/AddKebabOpinion/hooks",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
@@ -57,6 +65,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/modules/AddKebabOpinion/hooks" />
+      <recent name="$PROJECT_DIR$/src/hooks" />
       <recent name="$PROJECT_DIR$/src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -74,7 +84,8 @@
       <updated>1707668602824</updated>
       <workItem from="1707668603823" duration="10675000" />
       <workItem from="1707748900992" duration="3567000" />
-      <workItem from="1707752473850" duration="868000" />
+      <workItem from="1707752473850" duration="6274000" />
+      <workItem from="1708252131533" duration="4728000" />
     </task>
     <task id="LOCAL-00001" summary="initial day">
       <option name="closed" value="true" />
@@ -108,7 +119,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707752372890</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="add env variables">
+      <option name="closed" value="true" />
+      <created>1707753474152</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1707753474152</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -119,6 +138,7 @@
     <MESSAGE value="initial day" />
     <MESSAGE value="add prettier, fix type errors, move logic to custom hooks" />
     <MESSAGE value="remove unused imports" />
-    <option name="LAST_COMMIT_MESSAGE" value="remove unused imports" />
+    <MESSAGE value="add env variables" />
+    <option name="LAST_COMMIT_MESSAGE" value="add env variables" />
   </component>
 </project>
