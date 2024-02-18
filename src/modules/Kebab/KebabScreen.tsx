@@ -1,14 +1,11 @@
-import {
-	Button,
-	FlatList,
-	StyleSheet,
-	Text,
-	TouchableWithoutFeedback,
-	View,
-} from 'react-native';
+import { FlatList, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { type ScreenProps } from '../../utils/types';
 import { useGetKebabOpinions } from './useGetKebabOpinions';
 import { useNavigation } from '../../hooks/useNavigation';
+import { Button } from 'react-native-paper';
+import { ScreenContainer } from '../../components/ui/ScreenContainer';
+import { List } from '../../components/ui/List/List';
+import { ListItem } from '../../components/ui/List/ListItem';
 
 type KebabScreenProps = ScreenProps<'KebabScreen'>;
 
@@ -30,48 +27,25 @@ export default function KebabScreen({ route }: KebabScreenProps) {
 	}
 
 	return (
-		<View style={styles.container}>
+		<ScreenContainer>
 			<Button
-				title='Dodaj opinie'
+				mode='contained'
 				onPress={() => goToAddKebabOpinionScreen(restaurant, kebab)}
-			/>
+			>
+				Dodaj opinię
+			</Button>
 
-			<Text>Opinie</Text>
-			<Text>{kebab.name}</Text>
-			<Text>{kebab.opinions_count}</Text>
-			<Text>{restaurant.name}</Text>
-
-			<FlatList
-				data={data}
-				contentContainerStyle={styles.list}
-				renderItem={({ item }) => (
-					<TouchableWithoutFeedback onPress={() => null}>
-						<View style={styles.itemContainer}>
-							<View style={styles.item}>
-								<View style={styles.itemBox}>
-									<Text style={styles.itemText}>
-										{item.id}
-									</Text>
-								</View>
-								<View style={styles.itemBox}>
-									<Text style={styles.itemText}>
-										{item.user}
-									</Text>
-								</View>
-								<View style={styles.itemBox}>
-									<Text style={styles.itemText}>
-										{item.value}
-									</Text>
-								</View>
-							</View>
-							<View>
-								<Text>{item.content}</Text>
-							</View>
-						</View>
-					</TouchableWithoutFeedback>
-				)}
-			/>
-		</View>
+			<List title='Opinie'>
+				{data.map((opinion) => (
+					<ListItem
+						title={opinion.user}
+						description={opinion.content}
+						right={() => <Text>{opinion.value} / 10</Text>}
+						key={opinion.id}
+					/>
+				))}
+			</List>
+		</ScreenContainer>
 	);
 }
 
@@ -81,28 +55,5 @@ const styles = StyleSheet.create({
 		height: '100%',
 		paddingHorizontal: 16,
 		paddingVertical: 12,
-	},
-	list: {
-		width: '100%',
-		height: '100%',
-	},
-	itemContainer: {
-		borderBottomWidth: 1,
-		borderBottomColor: 'gray',
-		paddingHorizontal: 8,
-		paddingBottom: 12,
-	},
-	item: {
-		flexDirection: 'row',
-		justifyContent: 'space-between',
-	},
-	itemBox: {
-		minWidth: 40,
-		paddingTop: 24,
-		paddingBottom: 14,
-		alignItems: 'center',
-	},
-	itemText: {
-		fontSize: 16,
 	},
 });

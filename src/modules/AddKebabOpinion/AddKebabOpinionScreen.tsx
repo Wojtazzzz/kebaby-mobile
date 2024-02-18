@@ -1,4 +1,4 @@
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { useAddRestaurant } from '../AddRestaurant/hooks/useAddRestaurant';
 import { useAddKebabOpinionForm } from './hooks/useAddKebabOpinionForm';
 import Dropdown from 'react-native-input-select';
@@ -6,6 +6,12 @@ import { useGetKebabSauces } from '../../hooks/useGetKebabSauces';
 import { ScreenProps } from '../../utils/types';
 import { useGetKebabSizes } from '../../hooks/useGetKebabSizes';
 import { useAddKebabOpinion } from './hooks/useAddKebabOpinion';
+import { Button } from 'react-native-paper';
+import { TextInput } from '../../components/ui/Form/TextInput';
+import { ScreenContainer } from '../../components/ui/ScreenContainer';
+import { FormContainer } from '../../components/ui/Form/FormContainer';
+import { FieldsContainer } from '../../components/ui/Form/FieldsContainer';
+import { InputSelect } from '../../components/ui/Form/InputSelect';
 
 type AddKebabOpinionScreenProps = ScreenProps<'AddKebabOpinionScreen'>;
 
@@ -49,82 +55,69 @@ export default function AddKebabOpinionScreen({
 	}
 
 	return (
-		<View style={styles.container}>
-			<Text>Opinia:</Text>
+		<ScreenContainer>
+			<FormContainer>
+				<FieldsContainer>
+					<TextInput
+						value={user}
+						label='Nazwa'
+						onChange={onChangeUser}
+					/>
 
-			<TextInput
-				style={styles.input}
-				onChangeText={onChangeUser}
-				value={user}
-				placeholder='Podpis'
-			/>
+					<InputSelect
+						label='Ocena'
+						placeholder='Ocena'
+						options={Array.from({ length: 10 }).map(
+							(value, index) => ({
+								label: `${10 - index} / 10`,
+								value: 10 - index,
+							}),
+						)}
+						value={value}
+						onChange={onChangeValue}
+					/>
 
-			<Dropdown
-				label='Ocena'
-				placeholder='Ocena'
-				options={Array.from({ length: 10 }).map((value, index) => ({
-					label: `${10 - index} / 10`,
-					value: 10 - index,
-				}))}
-				selectedValue={value}
-				onValueChange={onChangeValue}
-				primaryColor={'green'}
-			/>
+					<TextInput
+						label='Treść'
+						value={content}
+						onChange={onChangeContent}
+					/>
 
-			<TextInput
-				style={styles.input}
-				onChangeText={onChangeContent}
-				value={content}
-				placeholder='Treść'
-			/>
+					<InputSelect
+						label='Sosiwo'
+						placeholder='Wybierz sosiwo wariacie'
+						options={
+							isLoadingSauces
+								? []
+								: sauces.map((sauce) => ({
+										label: sauce.name,
+										value: sauce.id,
+									}))
+						}
+						value={sauce}
+						onChange={onChangeSauce}
+					/>
 
-			{isLoadingSauces ? (
-				<Text>Loading</Text>
-			) : (
-				<Dropdown
-					label='Sosiwo'
-					placeholder='Wybierz sosiwo wariacie'
-					options={sauces.map((sauce) => ({
-						label: sauce.name,
-						value: sauce.id,
-					}))}
-					selectedValue={sauce}
-					onValueChange={onChangeSauce}
-					primaryColor={'green'}
-				/>
-			)}
+					<InputSelect
+						label='Rozmiar'
+						placeholder='Wybierz rozmiar wariacie'
+						options={
+							isLoadingSizes
+								? []
+								: sizes.map((size) => ({
+										label: size.name,
+										value: size.id,
+									}))
+						}
+						value={size}
+						onChange={onChangeSize}
+					/>
+				</FieldsContainer>
 
-			{isLoadingSizes ? (
-				<Text>Loading</Text>
-			) : (
-				<Dropdown
-					label='Rozmiar'
-					placeholder='Wybierz rozmiar wariacie'
-					options={sizes.map((size) => ({
-						label: size.name,
-						value: size.id,
-					}))}
-					selectedValue={size}
-					onValueChange={onChangeSize}
-					primaryColor={'green'}
-				/>
-			)}
-
-			<Button title='Zapisz' onPress={submit} />
-		</View>
+				<Button mode='contained' onPress={submit}>
+					Zapisz
+				</Button>
+			</FormContainer>
+		</ScreenContainer>
 	);
 }
-
-const styles = StyleSheet.create({
-	container: {
-		width: '100%',
-		height: '100%',
-		paddingHorizontal: 16,
-	},
-	input: {
-		height: 40,
-		margin: 12,
-		borderWidth: 1,
-		padding: 10,
-	},
-});

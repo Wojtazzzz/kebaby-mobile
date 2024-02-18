@@ -1,6 +1,7 @@
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { type UseNavigation } from '../../../App';
+import { Button } from 'react-native-paper';
 
 export function HomeHeader() {
 	const navigation = useNavigation<UseNavigation>();
@@ -11,9 +12,11 @@ export function HomeHeader() {
 
 	return (
 		<View style={styles.container}>
-			<Text style={styles.title}>Kebaby</Text>
+			<Text style={styles.title}>Miejscówki</Text>
 
-			<Button title='Dodaj lokal' onPress={goToRestaurantPage} />
+			<Button mode='contained' onPress={goToRestaurantPage}>
+				Dodaj
+			</Button>
 		</View>
 	);
 }

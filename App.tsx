@@ -11,6 +11,7 @@ import {
 	NativeStackNavigationProp,
 } from '@react-navigation/native-stack';
 import { HomeHeader } from './src/components/headers/HomeHeader';
+import { ScreenContainer } from './src/components/ui/ScreenContainer';
 
 export type RootStackParamList = {
 	HomeScreen: undefined;
@@ -79,7 +80,7 @@ export default function App() {
 					<Stack.Screen
 						name='AddRestaurantScreen'
 						component={AddRestaurantScreen}
-						options={{ title: 'Dodaj lokal' }}
+						options={{ title: 'Dodaj kebabownie' }}
 					/>
 
 					<Stack.Screen

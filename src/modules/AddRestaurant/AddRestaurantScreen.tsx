@@ -1,6 +1,10 @@
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useAddRestaurant } from './hooks/useAddRestaurant';
 import { useAddRestaurantForm } from './hooks/useAddRestaurantForm';
+import { Button } from 'react-native-paper';
+import { TextInput } from '../../components/ui/Form/TextInput';
+import { ScreenContainer } from '../../components/ui/ScreenContainer';
+import { FormContainer } from '../../components/ui/Form/FormContainer';
+import { FieldsContainer } from '../../components/ui/Form/FieldsContainer';
 
 export default function AddRestaurantScreen() {
 	const { name, city, onChangeName, onChangeCity } = useAddRestaurantForm();
@@ -14,38 +18,26 @@ export default function AddRestaurantScreen() {
 	}
 
 	return (
-		<View style={styles.container}>
-			<Text>Dodawanie restauracji!</Text>
+		<ScreenContainer>
+			<FormContainer>
+				<FieldsContainer>
+					<TextInput
+						label='Nazwa'
+						value={name}
+						onChange={onChangeName}
+					/>
 
-			<TextInput
-				style={styles.input}
-				onChangeText={onChangeName}
-				value={name}
-				placeholder='Nazwa'
-			/>
+					<TextInput
+						label='Miasto'
+						value={city}
+						onChange={onChangeCity}
+					/>
+				</FieldsContainer>
 
-			<TextInput
-				style={styles.input}
-				onChangeText={onChangeCity}
-				value={city}
-				placeholder='Miasto'
-			/>
-
-			<Button title='Zapisz' onPress={submit} />
-		</View>
+				<Button mode='contained' onPress={submit}>
+					Dodaj
+				</Button>
+			</FormContainer>
+		</ScreenContainer>
 	);
 }
-
-const styles = StyleSheet.create({
-	container: {
-		width: '100%',
-		height: '100%',
-		paddingHorizontal: 16,
-	},
-	input: {
-		height: 40,
-		margin: 12,
-		borderWidth: 1,
-		padding: 10,
-	},
-});
