@@ -1,7 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
-import { useAddRestaurant } from '../AddRestaurant/hooks/useAddRestaurant';
 import { useAddKebabOpinionForm } from './hooks/useAddKebabOpinionForm';
-import Dropdown from 'react-native-input-select';
 import { useGetKebabSauces } from '../../hooks/useGetKebabSauces';
 import { ScreenProps } from '../../utils/types';
 import { useGetKebabSizes } from '../../hooks/useGetKebabSizes';
@@ -12,6 +9,7 @@ import { ScreenContainer } from '../../components/ui/ScreenContainer';
 import { FormContainer } from '../../components/ui/Form/FormContainer';
 import { FieldsContainer } from '../../components/ui/Form/FieldsContainer';
 import { InputSelect } from '../../components/ui/Form/InputSelect';
+import { TextArea } from '../../components/ui/Form/TextArea';
 
 type AddKebabOpinionScreenProps = ScreenProps<'AddKebabOpinionScreen'>;
 
@@ -60,12 +58,12 @@ export default function AddKebabOpinionScreen({
 				<FieldsContainer>
 					<TextInput
 						value={user}
-						label='Nazwa'
+						label='Nazwa *'
 						onChange={onChangeUser}
 					/>
 
 					<InputSelect
-						label='Ocena'
+						label='Ocena *'
 						placeholder='Ocena'
 						options={Array.from({ length: 10 }).map(
 							(value, index) => ({
@@ -77,14 +75,8 @@ export default function AddKebabOpinionScreen({
 						onChange={onChangeValue}
 					/>
 
-					<TextInput
-						label='Treść'
-						value={content}
-						onChange={onChangeContent}
-					/>
-
 					<InputSelect
-						label='Sosiwo'
+						label='Sosiwo *'
 						placeholder='Wybierz sosiwo wariacie'
 						options={
 							isLoadingSauces
@@ -99,7 +91,7 @@ export default function AddKebabOpinionScreen({
 					/>
 
 					<InputSelect
-						label='Rozmiar'
+						label='Rozmiar *'
 						placeholder='Wybierz rozmiar wariacie'
 						options={
 							isLoadingSizes
@@ -111,6 +103,12 @@ export default function AddKebabOpinionScreen({
 						}
 						value={size}
 						onChange={onChangeSize}
+					/>
+
+					<TextArea
+						label='Treść'
+						value={content}
+						onChange={onChangeContent}
 					/>
 				</FieldsContainer>
 
