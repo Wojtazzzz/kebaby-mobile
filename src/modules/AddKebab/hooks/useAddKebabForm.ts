@@ -3,6 +3,7 @@ import { useState } from 'react';
 export function useAddKebabForm() {
 	const [name, setName] = useState('');
 	const [sauce, setSauce] = useState<number[]>([]);
+	const [meat, setMeat] = useState<number[]>([]);
 	const [size, setSize] = useState<number[]>([]);
 
 	function onChangeName(value: string) {
@@ -13,6 +14,10 @@ export function useAddKebabForm() {
 		setSauce(value.map((sauceId) => Number(sauceId)));
 	}
 
+	function onChangeMeat(value: string[] | number[]) {
+		setMeat(value.map((meatId) => Number(meatId)));
+	}
+
 	function onChangeSize(value: string[] | number[]) {
 		setSize(value.map((sizeId) => Number(sizeId)));
 	}
@@ -20,9 +25,11 @@ export function useAddKebabForm() {
 	return {
 		name,
 		sauce,
+		meat,
 		size,
 		onChangeName,
 		onChangeSauce,
+		onChangeMeat,
 		onChangeSize,
 	};
 }

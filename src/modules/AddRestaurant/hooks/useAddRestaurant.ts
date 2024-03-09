@@ -17,11 +17,11 @@ export function useAddRestaurant() {
 		mutationFn: async (data: AddRestaurantPayload) =>
 			api.post(data, '/restaurants'),
 		onSuccess: async () => {
-			await queryClient.refetchQueries({
+			goToHomeScreen();
+
+			await queryClient.invalidateQueries({
 				queryKey: getRestaurantListQueryKey(),
 			});
-
-			goToHomeScreen();
 		},
 	});
 

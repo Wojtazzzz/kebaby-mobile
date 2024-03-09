@@ -36,7 +36,11 @@ export type RootStackParamList = {
 
 export type UseNavigation = NativeStackNavigationProp<RootStackParamList>;
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+	defaultOptions: {
+		queries: {},
+	},
+});
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 AppRegistry.registerComponent('HomeScreen', () => HomeScreen);

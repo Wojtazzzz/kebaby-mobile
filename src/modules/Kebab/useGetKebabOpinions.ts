@@ -9,9 +9,19 @@ const schema = Yup.object({
 			id: Yup.number().required(),
 			user: Yup.string().required(),
 			value: Yup.number().required(),
-			content: Yup.string().required(),
+			content: Yup.string()
+				.transform((value) => (value === null ? '' : value))
+				.default('')
+				.nullable(),
 			created_at: Yup.string().required(),
 			sauce: Yup.object({
+				id: Yup.number().required(),
+				name: Yup.string().required(),
+			})
+				.required()
+				.strict(true)
+				.noUnknown(),
+			meat: Yup.object({
 				id: Yup.number().required(),
 				name: Yup.string().required(),
 			})
@@ -38,7 +48,7 @@ const schema = Yup.object({
 	.noUnknown();
 
 export function useGetKebabOpinions(restaurantId: number, kebabId: number) {
-	const { isLoading, isError, isSuccess, data, error } = useQuery({
+	const { isLoading, isError, isSuccess, data, error, isPending } = useQuery({
 		queryFn: async () =>
 			await api
 				.get(`/restaurants/${restaurantId}/kebabs/${kebabId}/opinions`)
@@ -50,8 +60,10 @@ export function useGetKebabOpinions(restaurantId: number, kebabId: number) {
 
 					return response.data;
 				}),
-		queryKey: getKebabOpinionsListQueryKey(restaurantId),
+		queryKey: ['kebab', kebabId, 'opinions'],
 	});
+
+	console.log('REFETCH: ', data);
 
 	return {
 		isLoading,
@@ -59,5 +71,6 @@ export function useGetKebabOpinions(restaurantId: number, kebabId: number) {
 		isSuccess,
 		data,
 		error,
+		isPending,
 	};
 }

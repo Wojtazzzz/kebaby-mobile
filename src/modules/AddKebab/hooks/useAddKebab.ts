@@ -12,10 +12,13 @@ import { Kebab } from '../../Restaurant/hooks/useGetRestaurantKebabs';
 
 type AddKebabPayload = {
 	name: string;
-	sizes: {
+	sauces: {
 		id: number;
 	}[];
-	sauces: {
+	meat: {
+		id: number;
+	}[];
+	sizes: {
 		id: number;
 	}[];
 };
@@ -28,11 +31,11 @@ export function useAddKebab(restaurant: Restaurant) {
 		mutationFn: async (data: AddKebabPayload) =>
 			api.post(data, `/restaurants/${restaurant.id}/kebabs`),
 		onSuccess: async () => {
+			goToRestaurantScreen(restaurant);
+
 			await queryClient.invalidateQueries({
 				queryKey: getRestaurantKebabsListQueryKey(restaurant.id),
 			});
-
-			goToRestaurantScreen(restaurant);
 		},
 	});
 

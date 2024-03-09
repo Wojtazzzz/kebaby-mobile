@@ -37,17 +37,23 @@ export default function KebabScreen({ route }: KebabScreenProps) {
 			</Button>
 
 			<List title='Opinie'>
-				{data.map((opinion) => (
+				{data?.map((opinion) => (
 					<ListItem
 						title={opinion.user}
 						description={() => (
 							<View>
-								<Text style={styles.opinionCreatedAt}>
+								<Text style={styles.opinionDetails}>
 									{moment(opinion.created_at).format(
 										'DD-MM-YYYY HH:mm',
 									)}
 								</Text>
-								<Text>{opinion.content.substring(0, 350)}</Text>
+								<Text style={styles.opinionDetails}>
+									{opinion.sauce.name}, {opinion.size.name},{' '}
+									{opinion.meat.name}
+								</Text>
+								<Text>
+									{(opinion.content ?? '').substring(0, 350)}
+								</Text>
 							</View>
 						)}
 						right={() => (
@@ -70,7 +76,7 @@ const styles = StyleSheet.create({
 		paddingHorizontal: 16,
 		paddingVertical: 12,
 	},
-	opinionCreatedAt: {
+	opinionDetails: {
 		fontSize: 12,
 		marginVertical: 2,
 	},

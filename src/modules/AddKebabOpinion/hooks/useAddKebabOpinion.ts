@@ -14,6 +14,7 @@ type AddKebabOpinionPayload = {
 	value: number;
 	content: string;
 	sauce_id: number;
+	meat_id: number;
 	size_id: number;
 };
 
@@ -28,16 +29,18 @@ export function useAddKebabOpinion(restaurant: Restaurant, kebab: Kebab) {
 				`/restaurants/${restaurant.id}/kebabs/${kebab.id}/opinions`,
 			),
 		onSuccess: async () => {
-			await queryClient.invalidateQueries({
-				queryKey: getKebabOpinionsListQueryKey(kebab.id),
-			});
-
 			goToKebabScreen(restaurant, kebab);
+
+			await queryClient.invalidateQueries({
+				queryKey: ['kebab', kebab.id, 'opinions'],
+			});
 		},
 	});
 
 	function addKebabOpinion(newKebabOpinion: AddKebabOpinionPayload) {
-		mutate(newKebabOpinion);
+		mutate(newKebabOpinion, {
+			onSuccess: async () => {},
+		});
 	}
 
 	return {

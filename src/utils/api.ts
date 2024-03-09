@@ -6,4 +6,5 @@ export const api = Wretch(API_URL, {
 	mode: 'cors',
 }).headers({
 	'X-Requested-With': 'XMLHttpRequest',
+	mode: 'cors',
 });

@@ -5,6 +5,7 @@ export function useAddKebabOpinionForm() {
 	const [value, setValue] = useState(10);
 	const [content, setContent] = useState('');
 	const [sauce, setSauce] = useState(0);
+	const [meat, setMeat] = useState(0);
 	const [size, setSize] = useState(0);
 
 	function onChangeUser(value: string) {
@@ -23,6 +24,10 @@ export function useAddKebabOpinionForm() {
 		setSauce(Number(value));
 	}
 
+	function onChangeMeat(value: string | number) {
+		setMeat(Number(value));
+	}
+
 	function onChangeSize(value: string | number) {
 		setSize(Number(value));
 	}
@@ -32,11 +37,13 @@ export function useAddKebabOpinionForm() {
 		value,
 		content,
 		sauce,
+		meat,
 		size,
 		onChangeUser,
 		onChangeValue,
 		onChangeContent,
 		onChangeSauce,
+		onChangeMeat,
 		onChangeSize,
 	};
 }

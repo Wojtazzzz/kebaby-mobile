@@ -9,6 +9,7 @@ import { useAddKebabForm } from './hooks/useAddKebabForm';
 import { useGetSauces } from '../../hooks/useGetSauces';
 import { useGetSizes } from '../../hooks/useGetSizes';
 import { useAddKebab } from './hooks/useAddKebab';
+import { useGetMeat } from '../../hooks/useGetMeat';
 
 type AddKebabScreenProps = ScreenProps<'AddKebabScreen'>;
 
@@ -16,10 +17,19 @@ export default function AddKebabScreen({ route }: AddKebabScreenProps) {
 	const { restaurant } = route.params;
 
 	const { data: sauces, isLoading: isLoadingSauces } = useGetSauces();
+	const { data: meatData, isLoading: isLoadingMeat } = useGetMeat();
 	const { data: sizes, isLoading: isLoadingSizes } = useGetSizes();
 
-	const { name, sauce, size, onChangeName, onChangeSauce, onChangeSize } =
-		useAddKebabForm();
+	const {
+		name,
+		sauce,
+		meat,
+		size,
+		onChangeName,
+		onChangeSauce,
+		onChangeMeat,
+		onChangeSize,
+	} = useAddKebabForm();
 
 	const { addKebab } = useAddKebab(restaurant);
 
@@ -31,6 +41,9 @@ export default function AddKebabScreen({ route }: AddKebabScreenProps) {
 			})),
 			sizes: size.map((size_id) => ({
 				id: size_id,
+			})),
+			meat: meat.map((meat_id) => ({
+				id: meat_id,
 			})),
 		});
 	}
@@ -59,6 +72,22 @@ export default function AddKebabScreen({ route }: AddKebabScreenProps) {
 						value={sauce}
 						isMultiple
 						onChange={onChangeSauce}
+					/>
+
+					<InputSelect
+						label='Mięso *'
+						placeholder='Wybierz mięso wariacie'
+						options={
+							isLoadingMeat || !meatData
+								? []
+								: meatData.map((meat) => ({
+										label: meat.name,
+										value: meat.id,
+									}))
+						}
+						value={meat}
+						isMultiple
+						onChange={onChangeMeat}
 					/>
 
 					<InputSelect

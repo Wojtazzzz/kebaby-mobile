@@ -7,11 +7,15 @@ export function getRestaurantKebabsListQueryKey(restaurantId: number) {
 }
 
 export function getKebabOpinionsListQueryKey(kebabId: number) {
-	return ['kebab', kebabId, 'opinions'];
+	return ['kebab', Number(kebabId), 'opinions'];
 }
 
 export function getKebabSaucesQueryKey(kebabId: number) {
 	return ['kebab', kebabId, 'sauces'];
+}
+
+export function getKebabMeatQueryKey(kebabId: number) {
+	return ['kebab', kebabId, 'meat'];
 }
 
 export function getKebabSizesQueryKey(kebabId: number) {
@@ -20,6 +24,10 @@ export function getKebabSizesQueryKey(kebabId: number) {
 
 export function getSaucesQueryKey() {
 	return ['sauces'];
+}
+
+export function getMeatQueryKey() {
+	return ['meat'];
 }
 
 export function getSizesQueryKey() {
