@@ -10,6 +10,7 @@ import { FormContainer } from '../../components/ui/Form/FormContainer';
 import { FieldsContainer } from '../../components/ui/Form/FieldsContainer';
 import { InputSelect } from '../../components/ui/Form/InputSelect';
 import { TextArea } from '../../components/ui/Form/TextArea';
+import { useGetKebabMeat } from '../../hooks/useGetKebabMeat';
 
 type AddKebabOpinionScreenProps = ScreenProps<'AddKebabOpinionScreen'>;
 
@@ -23,14 +24,22 @@ export default function AddKebabOpinionScreen({
 		value,
 		content,
 		sauce,
+		meat,
 		size,
 		onChangeUser,
 		onChangeValue,
 		onChangeContent,
 		onChangeSauce,
+		onChangeMeat,
 		onChangeSize,
 	} = useAddKebabOpinionForm();
+
 	const { data: sauces, isLoading: isLoadingSauces } = useGetKebabSauces(
+		restaurant.id,
+		kebab.id,
+	);
+
+	const { data: meatData, isLoading: isLoadingMeat } = useGetKebabMeat(
 		restaurant.id,
 		kebab.id,
 	);
@@ -47,8 +56,9 @@ export default function AddKebabOpinionScreen({
 			user,
 			value,
 			content,
-			size_id: size,
 			sauce_id: sauce,
+			meat_id: meat,
+			size_id: size,
 		});
 	}
 
@@ -88,6 +98,21 @@ export default function AddKebabOpinionScreen({
 						}
 						value={sauce}
 						onChange={onChangeSauce}
+					/>
+
+					<InputSelect
+						label='Mięso *'
+						placeholder='Wybierz mięso wariacie'
+						options={
+							isLoadingMeat || !meatData
+								? []
+								: meatData.map((meat) => ({
+										label: meat.name,
+										value: meat.id,
+									}))
+						}
+						value={meat}
+						onChange={onChangeMeat}
 					/>
 
 					<InputSelect
