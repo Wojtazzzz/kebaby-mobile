@@ -2,6 +2,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useNavigation } from '../../../hooks/useNavigation';
 import {
 	getKebabOpinionsListQueryKey,
+	getRestaurantKebabsListQueryKey,
 	getRestaurantListQueryKey,
 } from '../../../utils/queryKeys';
 import { API_URL } from '../../../utils/env';
@@ -9,38 +10,37 @@ import { api } from '../../../utils/api';
 import { Restaurant } from '../../Home/hooks/useGetRestaurants';
 import { Kebab } from '../../Restaurant/hooks/useGetRestaurantKebabs';
 
-type AddKebabOpinionPayload = {
-	user: string;
-	value: number;
-	content: string;
-	sauce_id: number;
-	size_id: number;
+type AddKebabPayload = {
+	name: string;
+	sizes: {
+		id: number;
+	}[];
+	sauces: {
+		id: number;
+	}[];
 };
 
-export function useAddKebabOpinion(restaurant: Restaurant, kebab: Kebab) {
+export function useAddKebab(restaurant: Restaurant) {
 	const queryClient = useQueryClient();
-	const { goToKebabScreen } = useNavigation();
+	const { goToRestaurantScreen } = useNavigation();
 
 	const { mutate } = useMutation({
-		mutationFn: async (data: AddKebabOpinionPayload) =>
-			api.post(
-				data,
-				`/restaurants/${restaurant.id}/kebabs/${kebab.id}/opinions`,
-			),
+		mutationFn: async (data: AddKebabPayload) =>
+			api.post(data, `/restaurants/${restaurant.id}/kebabs`),
 		onSuccess: async () => {
 			await queryClient.invalidateQueries({
-				queryKey: getKebabOpinionsListQueryKey(kebab.id),
+				queryKey: getRestaurantKebabsListQueryKey(restaurant.id),
 			});
 
-			goToKebabScreen(restaurant, kebab);
+			goToRestaurantScreen(restaurant);
 		},
 	});
 
-	function addKebabOpinion(newKebabOpinion: AddKebabOpinionPayload) {
-		mutate(newKebabOpinion);
+	function addKebab(newKebab: AddKebabPayload) {
+		mutate(newKebab);
 	}
 
 	return {
-		addKebabOpinion,
+		addKebab,
 	};
 }

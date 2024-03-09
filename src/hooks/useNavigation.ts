@@ -1,17 +1,7 @@
 import { type UseNavigation } from '../../App';
 import { useNavigation as useReactNavigation } from '@react-navigation/native';
-
-type Restaurant = {
-	id: number;
-	name: string;
-	city: string;
-};
-
-type Kebab = {
-	id: number;
-	name: string;
-	opinions_count: number;
-};
+import { type Kebab } from '../modules/Restaurant/hooks/useGetRestaurantKebabs';
+import { type Restaurant } from '../modules/Home/hooks/useGetRestaurants';
 
 export function useNavigation() {
 	const navigation = useReactNavigation<UseNavigation>();
@@ -44,11 +34,18 @@ export function useNavigation() {
 		});
 	}
 
+	function goToAddKebabScreen(restaurant: Restaurant) {
+		navigation.navigate('AddKebabScreen', {
+			restaurant,
+		});
+	}
+
 	return {
 		goToAddRestaurantScreen,
 		goToRestaurantScreen,
 		goToHomeScreen,
 		goToKebabScreen,
 		goToAddKebabOpinionScreen,
+		goToAddKebabScreen,
 	};
 }

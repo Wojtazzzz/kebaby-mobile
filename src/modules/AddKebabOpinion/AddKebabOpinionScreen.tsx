@@ -79,7 +79,7 @@ export default function AddKebabOpinionScreen({
 						label='Sosiwo *'
 						placeholder='Wybierz sosiwo wariacie'
 						options={
-							isLoadingSauces
+							isLoadingSauces || !sauces
 								? []
 								: sauces.map((sauce) => ({
 										label: sauce.name,
@@ -94,7 +94,7 @@ export default function AddKebabOpinionScreen({
 						label='Rozmiar *'
 						placeholder='Wybierz rozmiar wariacie'
 						options={
-							isLoadingSizes
+							isLoadingSizes || !sizes
 								? []
 								: sizes.map((size) => ({
 										label: size.name,

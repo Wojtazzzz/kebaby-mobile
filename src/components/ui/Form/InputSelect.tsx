@@ -6,19 +6,30 @@ type InputSelectOption = {
 	value: string | number;
 };
 
-type InputSelectProps = {
-	label: string;
-	placeholder: string;
-	options: InputSelectOption[];
-	value: string | number;
-	onChange: (newValue: string | number) => void;
-};
+type InputSelectProps =
+	| {
+			label: string;
+			placeholder: string;
+			options: InputSelectOption[];
+			value: string[] | number[];
+			isMultiple: true;
+			onChange: (newValue: string[] | number[]) => void;
+	  }
+	| {
+			label: string;
+			placeholder: string;
+			options: InputSelectOption[];
+			value: string | number;
+			isMultiple?: false;
+			onChange: (newValue: string | number) => void;
+	  };
 
 export function InputSelect({
 	label,
 	placeholder,
 	options,
 	value,
+	isMultiple = false,
 	onChange,
 }: InputSelectProps) {
 	return (
@@ -32,6 +43,7 @@ export function InputSelect({
 			selectedValue={value}
 			onValueChange={onChange}
 			primaryColor='green'
+			isMultiple={isMultiple}
 		/>
 	);
 }

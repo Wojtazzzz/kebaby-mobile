@@ -19,20 +19,23 @@ type RestaurantScreenProps = ScreenProps<'RestaurantScreen'>;
 
 export default function RestaurantScreen({ route }: RestaurantScreenProps) {
 	const { restaurant } = route.params;
-	const { goToKebabScreen } = useNavigation();
+	const { goToKebabScreen, goToAddKebabScreen } = useNavigation();
 	const { data, isLoading } = useGetRestaurantKebabs(restaurant.id);
 
 	return (
 		<ScreenContainer>
 			<View style={styles.buttonsContainer}>
-				<Button mode='text' onPress={() => alert('Już wkrótce...')}>
+				<Button
+					mode='text'
+					onPress={() => goToAddKebabScreen(restaurant)}
+				>
 					Dodaj nowego kebsa
 				</Button>
 				<Button mode='text' onPress={() => alert('Już wkrótce...')}>
 					Oceń lokal
 				</Button>
 			</View>
-			{isLoading || (
+			{!isLoading && data && (
 				<List title='Oferta'>
 					{data.map((kebab) => (
 						<TouchableRipple
@@ -42,7 +45,7 @@ export default function RestaurantScreen({ route }: RestaurantScreenProps) {
 						>
 							<ListItem
 								title={kebab.name}
-								description={`Średnia ocena: ${Number(kebab.opinions_avg_value).toFixed(1)} / 10`}
+								description={`${kebab.opinions_avg_value ? `Średnia ocen: ${Number(kebab.opinions_avg_value).toFixed(1)}` : 'Brak ocen'}`}
 								right={() => <ListIcon icon='chevron-right' />}
 							/>
 						</TouchableRipple>

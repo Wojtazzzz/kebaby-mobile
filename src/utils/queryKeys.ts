@@ -17,3 +17,11 @@ export function getKebabSaucesQueryKey(kebabId: number) {
 export function getKebabSizesQueryKey(kebabId: number) {
 	return ['kebab', kebabId, 'sizes'];
 }
+
+export function getSaucesQueryKey() {
+	return ['sauces'];
+}
+
+export function getSizesQueryKey() {
+	return ['sizes'];
+}

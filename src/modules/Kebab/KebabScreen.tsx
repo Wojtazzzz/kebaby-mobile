@@ -44,7 +44,7 @@ export default function KebabScreen({ route }: KebabScreenProps) {
 							<View>
 								<Text style={styles.opinionCreatedAt}>
 									{moment(opinion.created_at).format(
-										'DD-MM-YYYY',
+										'DD-MM-YYYY HH:mm',
 									)}
 								</Text>
 								<Text>{opinion.content.substring(0, 350)}</Text>

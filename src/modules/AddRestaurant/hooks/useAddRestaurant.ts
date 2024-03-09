@@ -1,14 +1,8 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import axios from 'axios';
 import { useNavigation } from '../../../hooks/useNavigation';
 import { getRestaurantListQueryKey } from '../../../utils/queryKeys';
 import { API_URL } from '../../../utils/env';
-
-async function mutationFn(data: AddRestaurantPayload) {
-	return await axios.post(`${API_URL}/restaurants`, data).catch((error) => {
-		console.log(error);
-	});
-}
+import { api } from '../../../utils/api';
 
 type AddRestaurantPayload = {
 	name: string;
@@ -21,7 +15,7 @@ export function useAddRestaurant() {
 
 	const { mutate } = useMutation({
 		mutationFn: async (data: AddRestaurantPayload) =>
-			await mutationFn(data),
+			api.post(data, '/restaurants'),
 		onSuccess: async () => {
 			await queryClient.refetchQueries({
 				queryKey: getRestaurantListQueryKey(),

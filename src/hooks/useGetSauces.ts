@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { getKebabSizesQueryKey } from '../utils/queryKeys';
+import { getKebabSaucesQueryKey, getSaucesQueryKey } from '../utils/queryKeys';
 import * as Yup from 'yup';
 import { api } from '../utils/api';
 
@@ -20,20 +20,18 @@ const schema = Yup.object({
 	.strict(true)
 	.noUnknown();
 
-export function useGetKebabSizes(restaurantId: number, kebabId: number) {
+export function useGetSauces() {
 	const { isLoading, isError, isSuccess, data, error } = useQuery({
 		queryFn: async () =>
-			await api
-				.get(`/restaurants/${restaurantId}/kebabs/${kebabId}/sizes`)
-				.json((response) => {
-					schema.validate(response);
-					if (!schema.isValidSync(response)) {
-						throw new Error('Serwer zwrócił nieprawidłowe dane');
-					}
+			await api.get('/sauces').json((response) => {
+				schema.validate(response);
+				if (!schema.isValidSync(response)) {
+					throw new Error('Serwer zwrócił nieprawidłowe dane');
+				}
 
-					return response.data;
-				}),
-		queryKey: getKebabSizesQueryKey(kebabId),
+				return response.data;
+			}),
+		queryKey: getSaucesQueryKey(),
 	});
 
 	return {

@@ -11,41 +11,26 @@ import {
 	NativeStackNavigationProp,
 } from '@react-navigation/native-stack';
 import { HomeHeader } from './src/components/headers/HomeHeader';
-import { ScreenContainer } from './src/components/ui/ScreenContainer';
+import { Restaurant } from './src/modules/Home/hooks/useGetRestaurants';
+import { Kebab } from './src/modules/Restaurant/hooks/useGetRestaurantKebabs';
+import AddKebabScreen from './src/modules/AddKebab/AddKebabScreen';
 
 export type RootStackParamList = {
 	HomeScreen: undefined;
 	AddRestaurantScreen: undefined;
 	RestaurantScreen: {
-		restaurant: {
-			id: number;
-			name: string;
-			city: string;
-		};
+		restaurant: Restaurant;
 	};
 	KebabScreen: {
-		restaurant: {
-			id: number;
-			name: string;
-			city: string;
-		};
-		kebab: {
-			id: number;
-			name: string;
-			opinions_count: number;
-		};
+		restaurant: Restaurant;
+		kebab: Kebab;
+	};
+	AddKebabScreen: {
+		restaurant: Restaurant;
 	};
 	AddKebabOpinionScreen: {
-		restaurant: {
-			id: number;
-			name: string;
-			city: string;
-		};
-		kebab: {
-			id: number;
-			name: string;
-			opinions_count: number;
-		};
+		restaurant: Restaurant;
+		kebab: Kebab;
 	};
 };
 
@@ -88,6 +73,14 @@ export default function App() {
 						component={KebabScreen}
 						options={({ route }) => ({
 							title: `${route.params.kebab.name} - ${route.params.restaurant.name}`,
+						})}
+					/>
+
+					<Stack.Screen
+						name='AddKebabScreen'
+						component={AddKebabScreen}
+						options={({ route }) => ({
+							title: `${route.params.restaurant.name} - Dodaj kebsa`,
 						})}
 					/>
 
