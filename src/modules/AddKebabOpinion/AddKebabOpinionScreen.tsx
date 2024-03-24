@@ -68,7 +68,7 @@ export default function AddKebabOpinionScreen({
 				<FieldsContainer>
 					<TextInput
 						value={user}
-						label='Nazwa *'
+						label='Podpis *'
 						onChange={onChangeUser}
 					/>
 
